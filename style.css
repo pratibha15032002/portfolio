@@ -1,0 +1,254 @@
+/* --- Universal Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(2, 2, 38);
+    color: white;
+    font-family: 'Arial', sans-serif; /* Added a fallback font */
+}
+
+/* --- Header --- */
+header {
+    width: 100%;
+    padding: 0;
+    height: auto; /* Adjusted for content */
+}
+
+/* --- Navigation Bar --- */
+nav {
+    background-color: rgb(20, 20, 97);
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px; /* Added padding for better spacing */
+}
+
+nav .Left {
+    font-size: 40px;
+    color: yellow;
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+
+nav .right ul {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 0; /* Removed unnecessary margin */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+nav .right ul li {
+    list-style: none;
+    margin: 0 15px; /* Adjusted margin for better spacing */
+}
+
+nav .right ul li a {
+    background-color: rgb(20, 20, 97);
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    font-size: 25px; /* Adjusted font size */
+    white-space: nowrap; /* Prevent text from breaking */
+}
+
+nav .right ul li a:hover {
+    color: yellow;
+    border-radius: 5px;
+}
+
+/* --- First Section --- */
+.firstSection {
+    display: flex;
+    flex-direction: row; /* Default to row for larger screens */
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 75px;
+    padding: 20px;
+    min-height: calc(100vh - 140px); /* Adjusted min-height for better fit */
+    gap: 40px; /* Added gap for spacing between sections */
+}
+
+.leftSection {
+    font-size: 45px; /* Adjusted font size */
+    text-align: center;
+    flex: 1;
+    padding-right: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.leftSection span {
+    color: yellow;
+}
+
+.rightSection {
+    width: 300px; /* Default width */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.rightSection img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+    margin-right: 0; /* Removed fixed margin */
+}
+
+/* --- Resume Button --- */
+.resume-button {
+    background-color: green;
+    color: white;
+    width: 200px; /* Fixed width for better consistency */
+    height: 45px; /* Adjusted height */
+    border-radius: 4px;
+    font-size: 20px; /* Adjusted font size */
+    border: none;
+    cursor: pointer;
+    margin-top: 25px; /* Increased margin */
+    transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+    background-color: darkgreen;
+}
+
+.resume-button a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    line-height: 45px; /* Centered text vertically */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: rgb(20, 20, 97);
+    color: white;
+    text-align: center;
+    padding: 20px 15px; /* Adjusted padding */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+footer a {
+    color: yellow;
+    text-decoration: none;
+    margin: 0 5px; /* Added margin for links */
+}
+
+footer p {
+    font-size: 25px; /* Adjusted font size */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Gap between footer elements */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablets and smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .firstSection {
+        flex-direction: column; /* Stack elements vertically */
+        margin-top: 40px;
+        min-height: auto; /* Allow content to dictate height */
+    }
+
+    .leftSection {
+        padding-right: 0;
+        font-size: 40px;
+        margin-bottom: 30px; /* Added spacing */
+    }
+
+    .rightSection {
+        width: 80%; /* Adjusted width for image */
+        max-width: 300px; /* Ensure image doesn't get too big */
+        margin: 0 auto; /* Center the image */
+    }
+
+    nav {
+        flex-direction: column; /* Stack nav items vertically */
+        height: auto; /* Allow height to adjust */
+        padding: 15px 10px;
+    }
+
+    nav .Left {
+        margin-bottom: 15px; /* Spacing below logo */
+        font-size: 35px;
+    }
+
+    nav .right ul {
+        flex-direction: column; /* Stack list items */
+        gap: 10px; /* Spacing between nav links */
+    }
+
+    nav .right ul li {
+        margin: 0; /* Remove horizontal margin */
+    }
+
+    nav .right ul li a {
+        font-size: 22px;
+        padding: 8px 15px; /* Increased padding for easier tapping */
+    }
+
+    .resume-button {
+        width: 180px;
+        height: 40px;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    footer p {
+        font-size: 20px;
+        flex-direction: column; /* Stack footer links vertically */
+    }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+    nav .Left {
+        font-size: 30px;
+    }
+
+    nav .right ul li a {
+        font-size: 18px;
+    }
+
+    .firstSection {
+        margin-top: 30px;
+        padding: 15px;
+    }
+
+    .leftSection {
+        font-size: 30px;
+    }
+
+    .leftSection div {
+        margin-top: 10px; /* Spacing between lines of text */
+    }
+
+    .rightSection {
+        width: 90%;
+    }
+
+    .resume-button {
+        width: 150px;
+        height: 35px;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    footer p {
+        font-size: 16px;
+    }
+}
