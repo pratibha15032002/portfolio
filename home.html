@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratibha Singh - Full Stack Developer Portfolio</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(2, 2, 38);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgb(20, 20, 97);
+            color: white;
+            padding-top: 0px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            padding-bottom: 15px;
+            color: yellow;
+        }
+
+        header .tagline {
+            font-size: 1.1em;
+            margin-top: 0;
+        }
+
+        header nav ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        header nav ul li {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header nav a:hover {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px 0;
+            margin-bottom: 20px;
+            background-color: rgb(31, 31, 165);
+            border-bottom: 1px solid rgb(2, 2, 38);
+        }
+
+        section h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: rgb(2, 2, 38);
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: none;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .skills-grid div {
+            background-color: rgb(2, 2, 38);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-grid h3 {
+            color: rgb(48, 170, 23);
+            margin-top: 0;
+        }
+
+        .skills-grid ul {
+
+            padding: 0;
+        }
+
+        .skills-grid ul li {
+            padding: 5px 0;
+        }
+
+        /* Projects Section */
+        .project-item {
+            background-color: rgb(2, 2, 38);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        /* Education and Certifications */
+        .education-section ul,
+        .certifications-section ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .education-section ul li,
+        .certifications-section ul li {
+            background-color: rgb(2, 2, 38);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            display: inline-block;
+            /* For horizontal alignment if items are short */
+            width: 80%;
+            /* Adjust as needed for smaller screens */
+            max-width: 600px;
+            /* Max width for larger screens */
+            text-align: left;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgb(20, 20, 97);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: yellow;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            header nav ul li {
+                display: block;
+                padding: 10px 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                /* Stack skills on smaller screens */
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>PRATIBHA SINGH</h1>
+            <p class="tagline">[Full Stack Developer]</p>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="summary" class="hero">
+            <div class="container">
+                <h2 style="color: yellow;">Summary</h2>
+                <p>I'm an aspiring Full Stack Developer with a strong foundation in both front-end and
+                    back-end technologies.I have experience building responsive, user-friendly
+                    web applications using HTML, CSS, JavaScript, and frameworks like React.js on the front end.I'm also
+                    familiar with databases like MySQL.I'm passionate
+                    about coding, problem-solving, and continuously learning new technologies to improve my skills.
+                    While I'm at the beginning of my career, I'm eager to contribute to real-world
+                    projects, collaborate with experienced teams, and grow as a developer in a dynamic environment.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 style="color: yellow;">Skills</h2>
+                <div class="skills-grid">
+                    <div>
+                        <h3>Programming Languages</h3>
+                        <ul>
+                            <li>Python programming language</li>
+                            <li>Object-oriented programming (OOP)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Web Development Frameworks</h3>
+                        <ul>
+                            <li>Django</li>
+                            <li>RESTAPI </li>
+                            <li>React.js </li>
+                            <li>Bootstrap </li>
+                            <li>Node js</li>
+                            <li>Express.js</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Frontend Technologies</h3>
+                        <ul>
+                            <li>HTML </li>
+                            <li>CSS </li>
+                            <li>JavaScript </li>
+                            <li>Tailwind Css </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Databases</h3>
+                        <ul>
+                            <li>MySQL </li>
+                            <li>Oracle </li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Other</h3>
+                        <ul>
+                            <li>Linux/Unix command line (LI,UI) </li>
+                            <li>Version control (Git) </li>
+                            <li>Sublime Text, Visual Studio Code, Pycharm </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 style="color: yellow;">Projects</h2>
+                <div class="project-item">
+                    <h3>Doctor Appoiment</h3>
+                    <p>This Project was made using React, Exprss js, Node js, MongoDB.
+                        Using this website users can book the Appoiment.
+                    </p>
+                </div>
+                <div class="project-item">
+                    <h3>Other Projects</h3>
+                    <ul>
+                        <li><a href="https://pratibha15032002.github.io/to-do-App/"></a>TO DO APP</li>
+                        <li><a href="https://pratibha15032002.github.io/musicc/" style="color: white; text-decoration: none;">Music Player </a></li>
+                        <li><a href="https://redirect-link-six.vercel.app/" style="color: white; text-decoration: none;">Simple URL Redirect Trace</a></li>
+                        <li><a href="https://isuuu-trackaer.vercel.app/" style="color: white; text-decoration: none;">Small Issue Tracker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education-section">
+            <div class="container">
+                <h2 style="color: yellow;">Education</h2>
+                <ul>
+                    </li>
+                    <li><strong>X:</strong> Sarswati H.S. School Vindhya Nagar, M.P </li>
+                    <li><strong>XII:</strong> Amrit Vidya Pith H.S. Vindhya Nagar, M.P </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications-section">
+            <div class="container">
+                <h2 style="color: yellow;">Certifications</h2>
+                <ul>
+                    <li>Python Full Stack (Pentagon Space, Bangalore)</li>
+                    <li>Unifide Mentor (Interships)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 style="color: rgb(52, 255, 52);">Contact</h2>
+            <p>Email: <a href="mailto:pratibha15032002@gmail.com">pratibha15032002@gmail.com</a>
+            </p>
+            <p>Contact: 8269981573, 6268508568 </p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/pratibha-singh-a5b7a5279/"
+                    target="_blank">linkedin.com/in/pratibha-singh-a5b7a5279/</a> </p>
+                    <br/>
+            <p>Languages: English, Hindi </p>
+        </div>
+    </footer>
+</body>
+
+</html>
