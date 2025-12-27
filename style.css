@@ -223,3 +223,85 @@ footer {
     .image-box { width: 280px; height: 280px; }
     nav .right ul { display: none; } /* Mobile menu toggle can be added later */
 }
+/* --- Navigation Bar Desktop --- */
+nav {
+    background-color: rgb(20, 20, 97);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .Left {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+nav .Left span {
+    color: yellow;
+    font-size: 35px; /* Dot color */
+}
+
+nav .right ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav .right ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav .right ul li a:hover {
+    color: yellow;
+}
+
+/* --- Mobile View Fix (Yaha changes kiye hain) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Upar niche dikhane ke liye */
+        height: auto;
+        padding: 15px 10px;
+    }
+
+    nav .right {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    nav .right ul {
+        display: flex; /* Ensure links are visible */
+        flex-direction: row; /* Horizontal line mein links */
+        justify-content: center;
+        flex-wrap: wrap; /* Jagah kam ho toh niche aa jayein */
+        gap: 15px;
+    }
+
+    nav .right ul li a {
+        font-size: 16px; /* Chota screen par size adjust */
+    }
+
+    .firstSection {
+        flex-direction: column-reverse; /* Image upar, text niche */
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .right ul {
+        gap: 10px;
+    }
+    nav .right ul li a {
+        font-size: 14px;
+    }
+}
