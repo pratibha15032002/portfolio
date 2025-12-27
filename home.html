@@ -4,194 +4,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratibha Singh - Full Stack Developer Portfolio</title>
+    <title>Pratibha Singh | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --bg: #0a0a1a;
+            --accent: #dbff4d;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
             margin: 0;
             padding: 0;
-            background-color: rgb(2, 2, 38);
-            color: white;
-            line-height: 1.6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% -20%, #1e1e4d, var(--bg));
+            color: var(--text);
+            line-height: 1.5;
         }
 
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1000px;
             margin: auto;
-            overflow: hidden;
-            padding: 20px 0;
         }
 
-        /* Header Styles */
+        /* --- Header: Compact & Stylish --- */
         header {
-            background-color: rgb(20, 20, 97);
-            color: white;
-            padding-top: 0px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-            text-align: center;
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h1 {
-            margin: 0;
-            padding-bottom: 15px;
-            color: yellow;
+            font-size: 1.2rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            font-weight: 800;
         }
 
-        header .tagline {
-            font-size: 1.1em;
-            margin-top: 0;
-        }
-
-        header nav ul {
-            padding: 0;
+        nav ul {
+            display: flex;
             list-style: none;
+            gap: 15px;
         }
 
-        header nav ul li {
-            display: inline;
-            padding: 0 15px;
-        }
-
-        header nav a {
+        nav a {
             color: #fff;
             text-decoration: none;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            opacity: 0.7;
         }
 
-        header nav a:hover {
-            color: yellow;
-            font-weight: bold;
-        }
+        nav a:hover { opacity: 1; color: var(--accent); }
 
-        /* Section Styles */
-        section {
-            padding: 40px 0;
-            margin-bottom: 20px;
-            background-color: rgb(31, 31, 165);
-            border-bottom: 1px solid rgb(2, 2, 38);
-        }
-
-        section h2 {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-        /* Hero Section */
+        /* --- Hero: Focused & Less Space --- */
         .hero {
-            background-color: rgb(2, 2, 38);
+            padding: 60px 0 40px;
             text-align: center;
-            padding: 60px 0;
-            border-bottom: none;
         }
 
-        /* Skills Section */
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 0.95rem;
+            color: #999;
+        }
+
+        /* --- Sections: Optimized Padding --- */
+        section { padding: 40px 0; }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        /* --- Skills: Horizontal Chips --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
         }
 
-        .skills-grid div {
-            background-color: rgb(2, 2, 38);
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: 0.3s;
         }
 
-        .skills-grid h3 {
-            color: rgb(48, 170, 23);
-            margin-top: 0;
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
 
-        .skills-grid ul {
-
-            padding: 0;
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .skills-grid ul li {
-            padding: 5px 0;
-        }
-
-        /* Projects Section */
-        .project-item {
-            background-color: rgb(2, 2, 38);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-item h3 {
-            color: white;
-            margin-top: 0;
-        }
-
-        /* Education and Certifications */
-        .education-section ul,
-        .certifications-section ul {
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             list-style: none;
-            padding: 0;
-            text-align: center;
         }
 
-        .education-section ul li,
-        .certifications-section ul li {
-            background-color: rgb(2, 2, 38);
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            display: inline-block;
-            /* For horizontal alignment if items are short */
-            width: 80%;
-            /* Adjust as needed for smaller screens */
-            max-width: 600px;
-            /* Max width for larger screens */
-            text-align: left;
+        .skill-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
         }
 
-        /* Footer Styles */
-        footer {
-            background-color: rgb(20, 20, 97);
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
+        /* --- Projects --- */
+        .project-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 15px;
         }
 
-        footer a {
-            color: yellow;
+        .project-item h3 { color: #fff; font-size: 1.2rem; margin-bottom: 10px; }
+        .project-item p { font-size: 0.9rem; color: #aaa; margin-bottom: 15px;}
+
+        .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
+        .project-links a {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 5px 15px;
+            border-radius: 4px;
             text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .project-links a:hover { background: var(--accent); color: #000; }
+
+        /* --- Education: Compact List --- */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
         }
 
-        /* Responsive Design */
+        .edu-item {
+            border-left: 2px solid var(--accent);
+            padding-left: 15px;
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .edu-item strong { display: block; font-size: 0.95rem; color: #fff; }
+        .edu-item p { font-size: 0.85rem; color: #888; }
+
+        /* --- Footer: Minimal --- */
+        footer {
+            padding: 40px 0;
+            background: #050510;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .contact-info a { color: var(--accent); text-decoration: none; }
+
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-
-            header nav ul li {
-                display: block;
-                padding: 10px 0;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-                /* Stack skills on smaller screens */
-            }
+            header .container { flex-direction: column; gap: 10px; }
+            .hero h2 { font-size: 1.8rem; }
+            nav ul { gap: 10px; }
         }
     </style>
-
 </head>
 
 <body>
@@ -199,141 +236,100 @@
     <header>
         <div class="container">
             <h1>PRATIBHA SINGH</h1>
-            <p class="tagline">[Full Stack Developer]</p>
             <nav>
                 <ul>
-                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#summary">Bio</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#projects">Work</a></li>
                     <li><a href="#education">Education</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main class="container">
         <section id="summary" class="hero">
-            <div class="container">
-                <h2 style="color: yellow;">Summary</h2>
-                <p>I'm an aspiring Full Stack Developer with a strong foundation in both front-end and
-                    back-end technologies.I have experience building responsive, user-friendly
-                    web applications using HTML, CSS, JavaScript, and frameworks like React.js on the front end.I'm also
-                    familiar with databases like MySQL.I'm passionate
-                    about coding, problem-solving, and continuously learning new technologies to improve my skills.
-                    While I'm at the beginning of my career, I'm eager to contribute to real-world
-                    projects, collaborate with experienced teams, and grow as a developer in a dynamic environment.
-                </p>
-            </div>
+            <h2>Full Stack Developer</h2>
+            <p>I build clean, responsive, and scalable web applications. Currently focused on the MERN stack and Python-based backends. Turning logic into digital experiences.</p>
         </section>
 
-        <section id="skills" class="skills-section">
-            <div class="container">
-                <h2 style="color: yellow;">Skills</h2>
-                <div class="skills-grid">
-                    <div>
-                        <h3>Programming Languages</h3>
-                        <ul>
-                            <li>Python programming language</li>
-                            <li>Object-oriented programming (OOP)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Web Development Frameworks</h3>
-                        <ul>
-                            <li>Django</li>
-                            <li>RESTAPI </li>
-                            <li>React.js </li>
-                            <li>Bootstrap </li>
-                            <li>Node js</li>
-                            <li>Express.js</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Frontend Technologies</h3>
-                        <ul>
-                            <li>HTML </li>
-                            <li>CSS </li>
-                            <li>JavaScript </li>
-                            <li>Tailwind Css </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Databases</h3>
-                        <ul>
-                            <li>MySQL </li>
-                            <li>Oracle </li>
-                            <li>MongoDB</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Other</h3>
-                        <ul>
-                            <li>Linux/Unix command line (LI,UI) </li>
-                            <li>Version control (Git) </li>
-                            <li>Sublime Text, Visual Studio Code, Pycharm </li>
-                        </ul>
-                    </div>
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li>React.js</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Tailwind</li><li>Bootstrap</li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <h2 style="color: yellow;">Projects</h2>
-                <div class="project-item">
-                    <h3>Doctor Appoiment</h3>
-                    <p>This Project was made using React, Exprss js, Node js, MongoDB.
-                        Using this website users can book the Appoiment.
-                    </p>
+                <div class="skill-card">
+                    <h3>Backend & DB</h3>
+                    <ul class="skill-list">
+                        <li>Node.js</li><li>Express.js</li><li>Django</li><li>Python</li><li>MongoDB</li><li>MySQL</li>
+                    </ul>
                 </div>
-                <div class="project-item">
-                    <h3>Other Projects</h3>
-                    <ul>
-                        <li><a href="https://pratibha15032002.github.io/to-do-App/"></a>TO DO APP</li>
-                        <li><a href="https://pratibha15032002.github.io/musicc/" style="color: white; text-decoration: none;">Music Player </a></li>
-                        <li><a href="https://redirect-link-six.vercel.app/" style="color: white; text-decoration: none;">Simple URL Redirect Trace</a></li>
-                        <li><a href="https://isuuu-trackaer.vercel.app/" style="color: white; text-decoration: none;">Small Issue Tracker</a></li>
+                <div class="skill-card">
+                    <h3>Other Tools</h3>
+                    <ul class="skill-list">
+                        <li>Git/GitHub</li><li>REST APIs</li><li>Linux</li><li>VS Code</li><li>Oracle</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="education-section">
-            <div class="container">
-                <h2 style="color: yellow;">Education</h2>
-                <ul>
-                    </li>
-                    <li><strong>X:</strong> Sarswati H.S. School Vindhya Nagar, M.P </li>
-                    <li><strong>XII:</strong> Amrit Vidya Pith H.S. Vindhya Nagar, M.P </li>
-                </ul>
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-item">
+                <h3>Doctor Appointment System</h3>
+                <p>Full-stack MERN application for booking medical slots with a real-time management dashboard.</p>
+                <div class="project-links">
+                    <span style="font-size: 0.7rem; color: var(--accent); opacity: 0.8;">MERN Stack</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>Micro-Projects</h3>
+                <div class="project-links">
+                    <a href="https://pratibha15032002.github.io/musicc/" target="_blank">Music Player</a>
+                    <a href="https://isuuu-trackaer.vercel.app/" target="_blank">Issue Tracker</a>
+                    <a href="https://redirect-link-six.vercel.app/" target="_blank">URL Trace</a>
+                    <a href="https://pratibha15032002.github.io/to-do-App/" target="_blank">To-Do App</a>
+                </div>
             </div>
         </section>
 
-        <section id="certifications" class="certifications-section">
-            <div class="container">
-                <h2 style="color: yellow;">Certifications</h2>
-                <ul>
-                    <li>Python Full Stack (Pentagon Space, Bangalore)</li>
-                    <li>Unifide Mentor (Interships)</li>
-                </ul>
+        <section id="education">
+            <h2 class="section-title">Education & Certs</h2>
+            <div class="edu-grid">
+                <div class="edu-item">
+                    <strong>Full Stack Development</strong>
+                    <p>Pentagon Space, Bangalore</p>
+                </div>
+                <div class="edu-item">
+                    <strong>Unified Mentor Internship</strong>
+                    <p>Web Development Trainee</p>
+                </div>
+                <div class="edu-item">
+                    <strong>Schooling (X & XII)</strong>
+                    <p>Vindhya Nagar, M.P (Science/Maths)</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer id="contact">
         <div class="container">
-            <h2 style="color: rgb(52, 255, 52);">Contact</h2>
-            <p>Email: <a href="mailto:pratibha15032002@gmail.com">pratibha15032002@gmail.com</a>
-            </p>
-            <p>Contact: 8269981573, 6268508568 </p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/pratibha-singh-a5b7a5279/"
-                    target="_blank">linkedin.com/in/pratibha-singh-a5b7a5279/</a> </p>
-                    <br/>
-            <p>Languages: English, Hindi </p>
+            <h3 style="color: #fff; margin-bottom: 5px;">Let's Talk</h3>
+            <div class="contact-info">
+                <span>Email: <a href="mailto:pratibha15032002@gmail.com">pratibha15032002@gmail.com</a></span>
+                <span>LinkedIn: <a href="https://www.linkedin.com/in/pratibha-singh-a5b7a5279/" target="_blank">Profile</a></span>
+                <span>Phone: 8269981573</span>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.7rem; opacity: 0.4;">&copy; 2024 PS. Dev Portfolio</p>
         </div>
     </footer>
-</body>
 
+</body>
 </html>

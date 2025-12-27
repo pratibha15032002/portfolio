@@ -1,366 +1,314 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <!-- Google Fonts - Inter for better typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Contact | Pratibha Singh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
+        :root {
+            --bg-color: #06061a;
+            --accent-color: #dbff4d;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-white: #ffffff;
+            --input-bg: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            background-color: rgb(2, 2, 38); /* Dark blue background */
-            color: white;
-            font-family: 'Inter', sans-serif; /* Use Inter font */
+            background: radial-gradient(circle at bottom left, #161635, #06061a);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
-        /* Main Heading Styles */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         h1 {
-            color: yellow;
-            margin: 0; 
-            padding-top: 40px; 
-            padding-bottom: 20px; 
             text-align: center;
-            font-size: 45px;
-            font-weight: bolder;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
         }
 
-        /* Sub-heading Styles (Get In Touch) */
-        h2 {
-            color: yellow;
-            margin-top: 40px; 
-            margin-bottom: 20px; 
-            text-align: center;
-            font-size: 35px; 
-            font-weight: bolder;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
         }
 
-        /* Main Contact Section Wrapper */
-        .contact-section-wrapper {
-            width: 90%; 
-            max-width: 900px; 
-            margin: 0 auto; /* Center the container horizontally */
-            padding: 20px; 
-            box-sizing: border-box; 
-            border-radius: 10px; 
-            background-color: rgba(39, 39, 192, 0.1); 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /
+        /* Left Side: Info & Map */
+        .info-side {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* Contact Details Section */
-        .contact-details {
-            border: 2px double white; 
-            padding: 20px; /* Padding inside contact details */
-            margin-bottom: 30px; 
-            font-size: 20px;
-            border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+        .contact-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
         }
 
-        .contact-details span {
-            display: block; 
-            margin-bottom: 10px; 
+        .contact-card:hover {
+            border-color: var(--accent-color);
+            transform: translateX(10px);
         }
 
-        .contact-details span:last-of-type {
-            margin-bottom: 0; 
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(219, 255, 77, 0.4);
         }
 
-        /* Google Map Iframe Container */
-        .map-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; 
-            height: 0;
+        .details h4 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .details p {
+            margin: 5px 0 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .map-box {
+            height: 250px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-top: 20px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
         }
 
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Right Side: Form */
+        .form-side {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-group input,
+        .input-group textarea {
             width: 100%;
-            height: 100%;
-            border: 0; /
-        }
-
-        /* Contact Form Section */
-        .contact-form-section {
-            border: 2px double white; 
-            padding: 20px; 
-            text-align: center;
-            border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-        }
-
-        .contact-form-section p {
-            font-size: 20px; 
-            margin-bottom: 25px; 
-        }
-
-        .form-container {
-            max-width: 500px; 
-            margin: 0 auto; 
-            text-align: left; 
-        }
-
-        .form-container div {
-            margin-bottom: 15px; 
-        }
-
-        .form-container label {
-            display: block; 
-            margin-bottom: 5px; 
-            font-size: 18px; 
-            font-weight: 500;
-        }
-
-        .form-container input,
-        .form-container textarea {
-            width: 100%; 
-            padding: 10px 15px; 
-            font-size: 18px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            background-color: #f0f0f0;
-            color: #333; 
-            box-sizing: border-box; 
-        }
-
-        .form-container textarea {
-            resize: vertical; 
-            min-height: 100px; 
-        }
-
-        /* Submit Button */
-        button[type="submit"] {
-            background-color: red;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             color: white;
-            border: none; 
-            border-radius: 5px;
-            font-size: 22px; 
-            padding: 12px 25px; 
-            margin-top: 20px; 
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            color: #aaa;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus~label,
+        .input-group input:valid~label,
+        .input-group textarea:focus~label,
+        .input-group textarea:valid~label {
+            top: -15px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-bottom-color: var(--accent-color);
+        }
+
+        button {
+            width: 100%;
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            width: 100%; 
-            max-width: 250px; 
-            display: block; 
-            margin-left: auto; 
-            margin-right: auto; 
-            transition: background-color 0.3s ease, transform 0.3s ease; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        button[type="submit"]:hover {
-            background-color: green;
-            transform: scale(1.05); 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(219, 255, 77, 0.3);
+            filter: brightness(1.1);
         }
 
-        /* Custom Alert Modal (to replace window.alert) */
-        .custom-alert-overlay {
+        /* Alert Box */
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            display: none; 
         }
 
-        .custom-alert-box {
-            background-color: white;
+        .alert {
+            background: #161635;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
             text-align: center;
-            max-width: 400px;
-            color: #333;
+            border: 1px solid var(--accent-color);
         }
 
-        .custom-alert-box p {
-            margin-bottom: 20px;
-            font-size: 18px;
+        .alert button {
+            width: auto;
+            padding: 10px 30px;
+            margin-top: 15px;
         }
 
-        .custom-alert-box button {
-            background-color: #4f46e5;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 16px;
-        }
+        @media (max-width: 850px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
 
-        .custom-alert-box button:hover {
-            background-color: #4338ca;
-        }
+            .info-side {
+                order: 2;
+            }
 
-
-        /* Media Queries for Responsiveness */
-
-        /* Tablets and larger phones (e.g., 768px and up) */
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 55px;
-            }
-            h2 {
-                font-size: 40px;
-            }
-            .contact-section-wrapper {
-                width: 85%; 
-                padding: 30px;
-            }
-            .contact-details {
-                font-size: 22px;
-                padding: 25px;
-            }
-            .map-container {
-                padding-bottom: 45%; 
-            }
-            .contact-form-section p {
-                font-size: 22px;
-            }
-            .form-container input,
-            .form-container textarea {
-                font-size: 19px;
-            }
-            button[type="submit"] {
-                width: 60%; 
-            }
-        }
-
-        /* Desktops and larger screens (e.g., 1024px and up) */
-        @media (min-width: 1024px) {
-            h1 {
-                font-size: 65px;
-            }
-            h2 {
-                font-size: 45px;
-            }
-            .contact-section-wrapper {
-                width: 75%; 
-                padding: 40px;
-            }
-            .contact-details {
-                font-size: 24px;
-                padding: 30px;
-            }
-            .map-container {
-                padding-bottom: 35%; 
-            }
-            .contact-form-section p {
-                font-size: 24px;
-            }
-            .form-container input,
-            .form-container textarea {
-                font-size: 20px;
-            }
-            button[type="submit"] {
-                width: 40%; 
+            .form-side {
+                order: 1;
             }
         }
     </style>
 </head>
-<body>
-    <h1><b>CONTACT</b></h1>
-    <div class="contact-section-wrapper">
-        <div class="contact-details">
-            <span>Mobile Number: 8269981573</span>
-            <span>Email: pratibha15032002@gmail.com</span>
-            <span>Location: Singrauli</span>
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22176.51297611945!2d82.6403613866442!3d24.198980810368944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398f3a35c331ff81%3A0x500e4baa28dc3fa!2sSingrauli%2C%20Madhya%20Pradesh!5e1!3m2!1sen!2sin!4v1751715092614!5m2!1sen!2sin"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
 
-        <h2><b>Get In Touch</b></h2>
-        <div class="contact-form-section">
-            <p>
-                Have a question or want to collaborate? Feel free to reach out!
-            </p>
-            <div class="form-container">
+<body>
+
+    <div class="container">
+        <h1>Contact Me</h1>
+
+        <div class="contact-grid">
+            <div class="info-side">
+                <div class="contact-card">
+                    <div class="icon-circle"><i class="fas fa-phone"></i></div>
+                    <div class="details">
+                        <h4>Phone</h4>
+                        <p>+91 8269981573</p>
+                        
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                    <div class="details">
+                        <h4>Email</h4>
+                        <p>pratibha15032002@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="details">
+                        <h4>Location</h4>
+                        <p>Singrauli, MP</p>
+                    </div>
+                </div>
+
+                <div class="map-box">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116345.5484860167!2d82.607490073238!3d24.18666324869894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398ef3090967a5b3%3A0x6d900445d341935e!2sSingrauli%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="form-side">
+                <h2>Get In Touch</h2>
                 <form id="contactForm">
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required />
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label>Full Name</label>
                     </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Email Address</label>
                     </div>
-                    <div>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                    <div class="input-group">
+                        <textarea id="message" rows="4" required></textarea>
+                        <label>Your Message</label>
                     </div>
-                    <button type="submit">
-                        Send Message
-                    </button>
+                    <button type="submit">Send Message <i class="fas fa-paper-plane"
+                            style="margin-left: 10px;"></i></button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Custom Alert Modal Markup -->
-    <div id="customAlertOverlay" class="custom-alert-overlay">
-        <div class="custom-alert-box">
-            <p id="customAlertMessage"></p>
-            <button id="customAlertOkButton">OK</button>
+    <div id="overlay" class="overlay">
+        <div class="alert">
+            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--accent-color);"></i>
+            <p id="msg" style="font-size: 1.2rem; margin-top: 15px;"></p>
+            <button onclick="closeAlert()">Done</button>
         </div>
     </div>
 
     <script>
-        // Custom alert function to replace window.alert
-        function showAlert(message) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const messageElement = document.getElementById('customAlertMessage');
-            const okButton = document.getElementById('customAlertOkButton');
-
-            messageElement.textContent = message;
-            overlay.style.display = 'flex'; // Show the overlay
-
-            okButton.onclick = () => {
-                overlay.style.display = 'none'; // Hide the overlay when OK is clicked
-            };
-        }
-
-        // Override the default alert to use our custom one
-        window.alert = showAlert;
-
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // In a real application, you would send this data to a server
-            // For demonstration, we'll just log it and show a custom alert.
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            console.log('Form Submitted:', { name, email, message });
-
-            showAlert('Thank you for your message! I will get back to you soon.');
-
-            // Clear the form fields
-            contactForm.reset();
+            document.getElementById('msg').innerText = `Hi ${name}, your message has been sent successfully!`;
+            document.getElementById('overlay').style.display = 'flex';
+            form.reset();
         });
+
+        function closeAlert() {
+            document.getElementById('overlay').style.display = 'none';
+        }
     </script>
 </body>
+
 </html>

@@ -1,197 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-</head>
-<style>
-    body {
-        background-color: rgb(2, 2, 38);
-        color: white;
+    <title>Portfolio | Pratibha Singh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #06061a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --accent-color: #dbff4d; 
+            --secondary-glow: #6e45e2;
+            --text-white: #ffffff;
+        }
 
-    }
+        body {
+            background: radial-gradient(circle at top right, #161635, #06061a);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    h1 {
-        color: yellow;
-        margin: 0px;
-        text-align: center;
-        font-size: 45px;
-    }
+        /* Background Animation Elements */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-glow);
+            filter: blur(150px);
+            opacity: 0.2;
+            z-index: -1;
+            animation: move 10s infinite alternate;
+        }
 
-    .Container {
-        width: 90%;
-    }
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100%, 50%); }
+        }
 
-    .peragraph {
-        margin-top: 62px;
-        margin-left: 12px;
-        display: block;
-        font-size: 27px;
-        margin-left: 12%;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-    .icons {
-        margin-top: 43px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-    .icons a img {
-        display: inline;
-
-    }
-
-    @media (min-width: 768px) {
         h1 {
-            font-size: 55px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-color), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 0;
         }
 
-        .about-section-wrapper {
-            width: 85%;
-            padding: 30px;
+        .intro-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px); /* Glass effect */
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 70px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .content-paragraph {
-            font-size: 20px;
-            padding: 0 20px;
+        .intro-section::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--accent-color);
         }
 
-        .skills-heading {
-            font-size: 40px;
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #d1d1f0;
         }
 
-        .skills-icons {
+        .project-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+
+        .project-pills li {
+            background: rgba(219, 255, 77, 0.1);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(219, 255, 77, 0.3);
+            transition: 0.3s;
+        }
+
+        .project-pills li:hover {
+            background: var(--accent-color);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .skills-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .skills-title span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Title Glow */
+        .skills-title::before {
+            content: "SKILLS";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            opacity: 0.05;
+            letter-spacing: 20px;
+            z-index: 0;
+            color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 30px;
         }
 
-        .skills-icons a {
-            width: 100px;
-            height: 100px;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        h1 {
-            font-size: 65px;
-        }
-
-        .about-section-wrapper {
-            width: 75%;
-            padding: 40px;
+        .skill-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 35px 20px;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
         }
 
-        .content-paragraph {
-            font-size: 22px;
-            padding: 0 30px;
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(219, 255, 77, 0.15);
         }
 
-        .skills-heading {
-            font-size: 45px;
+        .icon-box {
+            background: linear-gradient(135deg, var(--accent-color), #fff);
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: 0.4s;
         }
 
-        .skills-icons {
-            gap: 40px;
+        .skill-card:hover .icon-box {
+            transform: rotateY(180deg);
         }
 
-        .skills-icons a {
-            width: 110px;
-            height: 110px;
+        .icon-box img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0.2);
         }
-    }
-</style>
 
+        .skill-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .intro-section { padding: 25px; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
 <body>
-    <h1><b>About Me</b></h1>
-    <div class="Container">
-        <div class="peragraph">
+
+    <div class="container">
+        <header>
+            <h1>Pratibha Singh</h1>
+            <p style="color: var(--accent-color); letter-spacing: 4px; font-weight: 300;">FULL STACK DEVELOPER</p>
+        </header>
+
+        <div class="intro-section">
             <p>
-                Hello! I'm [PRATIBHA SINGH], I am Python Full Stack Developer. I'm currently risiding Singrauli (Madhya
-                Pradesh). <br />
-                I have done python full stack course from Bangalore institute and I have done 6 month virtual
-                internship with a unified mentor from frontend developer, during the internships I worked on many
-                projects
-                like-
-                <br />
-            <ul>
-                <li>Weather</li>
-                <li>Doctor Appoiment</li>
+                Hi! I am a <strong>Python Full Stack Developer</strong> based in Singrauli (M.P.). 
+                Specialized in building scalable web applications with a focus on clean code and interactive UI/UX. 
+                I turn complex problems into beautiful digital experiences.
+            </p>
+            <p><strong>Recently Completed Projects:</strong></p>
+            <ul class="project-pills">
+                <li>Weather App</li>
+                <li>Doctor Appointment</li>
                 <li>Facebook Clone</li>
-                <li>E-commerce Website</li>
+                <li>E-commerce</li>
                 <li>Music Player</li>
             </ul>
-            <br />
-            </p>
-            <h1>SKILLS</h1>
-            <div class="icons">
-                <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-                        alt="html5" width="100" height="100" style="background-color: azure;" />
-                </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-                        alt="javascript" width="100" height="100" style="background-color: azure;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://www.oracle.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg"
-                        alt="oracle" width="100" height="100" style="background-color: white;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://www.python.org" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                        alt="python" width="100" height="100" style="background-color: azure;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
-                        alt="react" width="100" height="100" style="background-color: beige;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://getbootstrap.com" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg"
-                        alt="bootstrap" width="100" height="100" style="background-color: cornflowerblue;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-original.svg"
-                        alt="django" width="100" height="100" style="background-color: bisque;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
 
-                <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
-                        alt="mysql" width="100" height="100" style="background-color: cornsilk;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://nodejs.org" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
-                        alt="nodejs" width="100" height="100" style="background-color: gainsboro;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <h2 class="skills-title"><span>Technologies & Tools</span></h2>
 
-                <br /><br />
-                <a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer">
-                    <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask"
-                        width="100" height="100" style="background-color: gainsboro;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"></div>
+                <div class="skill-name">HTML5</div>
+            </div>
 
-                <a href="https://nodejs.org" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
-                        alt="nodejs" width="100" height="100" style="background-color: aliceblue;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"></div>
+                <div class="skill-name">CSS3</div>
+            </div>
 
-                <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
-                        alt="mongodb" width="100" height="100" style="background-color: antiquewhite;" />
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></div>
+                <div class="skill-name">JavaScript</div>
+            </div>
 
-               <br/><br/>
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"></div>
+                <div class="skill-name">React.js</div>
+            </div>
 
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"></div>
+                <div class="skill-name">Node.js</div>
+            </div>
 
-                <p>
-                    I AM WORKED ON MANY TYPES OF PROJECT
-                </p>
-                <ul>
-                    <li>PYTHON</li>
-                    <li>BACKEND</li>
-                    <li>FRONTEND</li>
-                    <li>MERN</li>
-                </ul>
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"></div>
+                <div class="skill-name">MongoDB</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"></div>
+                <div class="skill-name">Python</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"></div>
+                <div class="skill-name">Django</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"></div>
+                <div class="skill-name">Flask</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"></div>
+                <div class="skill-name">Oracle</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"></div>
+                <div class="skill-name">Bootstrap</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"></div>
+                <div class="skill-name">Postman</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-box"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"></div>
+                <div class="skill-name">GitHub</div>
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>

@@ -4,276 +4,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <!-- Google Fonts - Inter for better typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <title>My Projects | Pratibha Singh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
+        :root {
+            --bg-dark: #06061a;
+            --accent: #dbff4d;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --neon-blue: #00d2ff;
+        }
+
         body {
-            background-color: rgb(2, 2, 38);
+            background-color: var(--bg-dark);
             color: white;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            box-sizing: border-box;
+            padding: 50px 20px;
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.05) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(219, 255, 77, 0.05) 0%, transparent 40%);
         }
 
-        /* Heading Styles */
-        h1 {
-            color: yellow;
-            margin: 0;
-            padding-top: 40px;
+        header {
             text-align: center;
-            font-size: 45px;
-            font-weight: bolder;
+            margin-bottom: 60px;
         }
 
-        /* Project Section Container */
-        .project-section-wrapper {
-            width: 90%;
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(219, 255, 77, 0.3);
+        }
+
+        .container {
             max-width: 1200px;
-            margin: 40px auto;
-            border: 2px double;
-            border-color: white;
-            padding: 20px;
-            box-sizing: border-box;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Project Card Styling */
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .project-number {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-top: 0;
+            z-index: 1;
+        }
+
+        .project-card p {
+            color: #b0b0d1;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            z-index: 1;
+        }
+
+        /* Modern Button Styling */
+        .btn-demo {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-demo:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(219, 255, 77, 0.4);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06061a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
             border-radius: 10px;
         }
 
-        /* Individual Project Container */
-        .project {
-            background-color: rgba(39, 39, 192, 0.2);
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .project:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Project Title Bar */
-        .project_container {
-            height: auto;
-            padding: 10px 0;
-            font-size: 30px;
-            text-align: center;
-            background-color: rgb(39, 39, 192);
-            color: white;
-            font-weight: bolder;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        /* Project Content */
-        .content {
-            font-size: 20px;
-            padding: 0 10px;
-        }
-
-        .content h3 {
-            margin-top: 15px;
-            margin-bottom: 10px;
-            font-size: 28px;
-            color: yellow;
-        }
-
-        .content p {
-            margin-bottom: 20px;
-            /* Space below paragraph */
-        }
-
-        /* Action Button */
-        .actions {
-            background-color: orangered;
-            color: white;
-            width: 50%;
-            max-width: 200px;
-            padding: 10px 0;
-            text-align: center;
-            margin: 20px auto 0 auto;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            /* Smooth transition for hover effects */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .actions a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .actions:hover {
-            background-color: green;
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Media Queries for Responsiveness */
-
-        /* Tablets and larger phones (e.g., 768px and up) */
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 55px;
-            }
-
-            .project-section-wrapper {
-                width: 80%;
-                /* Slightly wider on tablets */
-                padding: 30px;
-            }
-
-            .project_container {
-                font-size: 36px;
-            }
-
-            .content {
-                font-size: 22px;
-            }
-
-            .content h3 {
-                font-size: 32px;
-            }
-
-            .actions {
-                width: 30%;
-                /* Narrower button on tablets */
-                max-width: 250px;
-            }
-        }
-
-        /* Desktops and larger screens (e.g., 1024px and up) */
-        @media (min-width: 1024px) {
-            h1 {
-                font-size: 65px;
-            }
-
-            .project-section-wrapper {
-                width: 70%;
-                padding: 40px;
-            }
-
-            .project_container {
-                font-size: 40px;
-            }
-
-            .content {
-                font-size: 24px;
-            }
-
-            .content h3 {
-                font-size: 36px;
-            }
-
-            .actions {
-                width: 20%;
-                /* Even narrower button on desktops */
-                max-width: 180px;
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- heading -->
-    <h1><b>PROJECT</b></h1>
-    <div class="project-section-wrapper">
-        <!-- project  -->
-        <div class="project">
-            <div class="project_container">
-                <span>Project 1</span>
-            </div>
-            <div class="content">
-                <h3>Music Player</h3>
-                <p>A music player typically features functionalities like playing, pausing, skipping, and stopping
-                    music, along with options for shuffling, creating playlists, and managing a music library.</p>
-                <div class="actions">
-                    <a href="https://pratibha15032002.github.io/musicc/" target="_blank" rel="noopener noreferrer">View
-                        Demo</a>
-                </div>
-            </div>
+
+    <header>
+        <h1> Projects</h1>
+        
+    </header>
+
+    <div class="container">
+
+        <div class="project-card">
+            <span class="project-number">01</span>
+            <h3>Music Player</h3>
+            <p>Features play, pause, skip, and library management with a sleek interactive user interface.</p>
+            <a href="https://pratibha15032002.github.io/musicc/" target="_blank" class="btn-demo">Launch App</a>
         </div>
 
-        <div class="project">
-            <div class="project_container">
-                <span>Project 2</span>
-            </div>
-            <div class="content">
-                <h3>Weather</h3>
-                <p>Weather refers to the short-term conditions of the atmosphere at a specific time and place,
-                    encompassing elements like temperature, humidity, precipitation, wind, and cloud cover</p>
-                <div class="actions">
-                    <a href="https://weather-1-0a6d.onrender.com" target="_blank" rel="noopener noreferrer">View
-                        Demo</a>
-                </div>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project_container">
-                <span>Project 3</span>
-            </div>
-            <div class="content">
-                <h3>Food</h3>
-                <p>These apps allow you to browse restaurants, view menus, and place orders for delivery. </p>
-                <div class="actions">
-                    <a href="https://pratibha15032002.github.io/food/" target="_blank" rel="noopener noreferrer">View
-                        Demo</a>
-                </div>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project_container">
-                <span>Project 4</span>
-            </div>
-            <div class="content">
-                <h3>To do App List</h3>
-                <p>Todoist is a popular task management app that helps individuals and teams organize work and life,
-                    boosting productivity by capturing, organizing, and prioritizing tasks</p>
-                <div class="actions">
-                    <a href="https://pratibha15032002.github.io/to-do-App/" target="_blank"
-                        rel="noopener noreferrer">View Demo</a>
-                </div>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project_container">
-                <span>Project 5</span>
-            </div>
-            <div class="content">
-                <h3>Craousel</h3>
-                <p>A craousel type of post that allows users to share multiple images or videos within a single post,
-                    which
-                    followers can swipe or click through<p>
-                <div class="actions">
-                    <a href="https://pratibha15032002.github.io/Crausel1/" target="_blank"
-                        rel="noopener noreferrer">View Demo</a>
-                </div>
-            </div>
-        </div>
-        <div class="project">
-            <div class="project_container">
-                <span>Project 6</span>
-            </div>
-            <div class="content">
-                <h3>Flipekart Clone</h3>
-                <p>Flipkart is an Indian e-commerce company, essentially an online shopping website and app. According
-                    to Flipkart, it offers a wide range of products across various categories like electronics, fashion,
-                    furniture, home appliances, groceries, and more.</p>
-                <div class="actions">
-                    <a href="https://pratibha15032002.github.io/Flipkart-Clone/" target="_blank"
-                        rel="noopener noreferrer">View Demo</a>
-                </div>
-            </div>
+        <div class="project-card">
+            <span class="project-number">02</span>
+            <h3>Weather App</h3>
+            <p>Real-time atmospheric conditions tracking including humidity, wind, and precipitation using external APIs.</p>
+            <a href="https://weather-1-0a6d.onrender.com" target="_blank" class="btn-demo">Check Weather</a>
         </div>
 
-        <!-- You can add more project divs here -->
+        <div class="project-card">
+            <span class="project-number">03</span>
+            <h3>Food Delivery</h3>
+            <p>Browse restaurant menus and experience a seamless ordering flow with dynamic category filtering.</p>
+            <a href="https://pratibha15032002.github.io/food/" target="_blank" class="btn-demo">View Menu</a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">04</span>
+            <h3>Task Manager</h3>
+            <p>Boost productivity with task prioritization, state management, and an organized life-work workflow.</p>
+            <a href="https://pratibha15032002.github.io/to-do-App/" target="_blank" class="btn-demo">Manage Tasks</a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">05</span>
+            <h3>Issue Tracker</h3>
+            <p>A professional system for logging, assigning, and tracking bugs or feature requests for dev teams.</p>
+            <a href="https://isuuu-trackaer.vercel.app/" target="_blank" class="btn-demo">View Dashboard</a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">06</span>
+            <h3>Flipkart Clone</h3>
+            <p>A full-scale e-commerce interface showcasing electronics, fashion, and furniture categories.</p>
+            <a href="https://pratibha15032002.github.io/Flipkart-Clone/" target="_blank" class="btn-demo">Explore Store</a>
+        </div>
+
     </div>
-</body>
 
+</body>
 </html>
